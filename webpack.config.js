@@ -45,6 +45,8 @@ const clientConfig = {
             loader: 'babel-loader',
             options: {
               presets: [
+                '@babel/preset-env',
+                /*
                 [
                   '@babel/preset-env',
                   {
@@ -53,6 +55,7 @@ const clientConfig = {
                     corejs: { version: 3, proposals: true },
                   },
                 ],
+                */
                 '@babel/preset-react',
               ],
             },
