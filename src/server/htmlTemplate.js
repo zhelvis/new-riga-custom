@@ -1,4 +1,4 @@
-const htmlTemplate = (html, helmet) =>
+const htmlTemplate = (html, helmet, css) =>
   `<!DOCTYPE html>
 <html ${helmet.htmlAttributes.toString()}>
 <head>
@@ -7,6 +7,7 @@ const htmlTemplate = (html, helmet) =>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     ${helmet.title.toString()}
     ${helmet.meta.toString()}
+    <style id="jss-server-side">${css}</style>
 </head>   
 <body>
     <div id="root">${html}</div>

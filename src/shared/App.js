@@ -1,12 +1,12 @@
 import React from 'react'
 import { Router } from '@reach/router'
 
-import Main from './pages/Main'
+import Home from './pages/Home'
 import NotFound from './pages/NotFound'
 
 const App = () => (
   <Router>
-    <Main path="/" />
+    <Home path="/" />
     <NotFound default />
   </Router>
 )
