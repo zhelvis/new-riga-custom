@@ -1,5 +1,5 @@
 const NodemonPlugin = require('nodemon-webpack-plugin')
-const nodeExternals = require('webpack-node-externals')
+// const nodeExternals = require('webpack-node-externals') // breaks material ui classname generator
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const mode = process.env.NODE_ENV
@@ -45,8 +45,6 @@ const clientConfig = {
             loader: 'babel-loader',
             options: {
               presets: [
-                '@babel/preset-env',
-                /*
                 [
                   '@babel/preset-env',
                   {
@@ -55,7 +53,6 @@ const clientConfig = {
                     corejs: { version: 3, proposals: true },
                   },
                 ],
-                */
                 '@babel/preset-react',
               ],
             },
@@ -105,7 +102,7 @@ const serverConfig = {
       },
     ],
   },
-  externals: nodeExternals(),
+  // externals: nodeExternals(),  // breaks material ui classname generator
   output: {
     path: `${__dirname}`,
     filename: 'server.js',

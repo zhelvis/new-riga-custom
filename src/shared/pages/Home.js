@@ -1,13 +1,11 @@
 import React from 'react'
-import { Head } from '../components/Head'
-import { Button } from '@material-ui/core'
+import Seo from '../components/Seo'
 
-const Home = () => (
-  <>
-    <Head title="Home page" description="this is home page" />
-    <Button color="primary">Hi</Button>
-    <div className="foo">Hello!</div>
-  </>
-)
-
-export default Home
+export default function Home() {
+  return (
+    <React.Fragment>
+      <Seo title="Home page" description="this is home page" />
+      <span>Home</span>
+    </React.Fragment>
+  )
+}

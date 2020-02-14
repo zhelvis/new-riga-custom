@@ -17,6 +17,7 @@ const theme = createMuiTheme({
       default: '#fff',
     },
   },
+  footerHeight: 50,
 })
 
 export default theme

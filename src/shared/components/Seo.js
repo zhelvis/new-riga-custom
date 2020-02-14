@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
-export const Head = ({ description, title }) => {
+export default function Head({ description, title }) {
   const locale = 'ru'
 
   return (

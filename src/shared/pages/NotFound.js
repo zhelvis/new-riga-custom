@@ -1,11 +1,11 @@
 import React from 'react'
-import { Head } from '../components/Head'
+import Seo from '../components/Seo'
 
-const NotFound = () => (
-  <>
-    <Head title="Not Found" description="this page does not exist" />
-    <div className="foo">404</div>
-  </>
-)
-
-export default NotFound
+export default function NotFound() {
+  return (
+    <React.Fragment>
+      <Seo title="Not Found" description="this page does not exist" />
+      <span>404</span>
+    </React.Fragment>
+  )
+}

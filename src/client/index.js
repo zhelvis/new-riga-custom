@@ -1,3 +1,4 @@
+import 'core-js/es/promise' // for ie11
 import React from 'react'
 import ReactDOM from 'react-dom'
 import CssBaseline from '@material-ui/core/CssBaseline'
