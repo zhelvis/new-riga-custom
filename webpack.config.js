@@ -1,6 +1,7 @@
 const NodemonPlugin = require('nodemon-webpack-plugin')
 // const nodeExternals = require('webpack-node-externals') // breaks material ui classname generator
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const LoadablePlugin = require('@loadable/webpack-plugin')
 
 const mode = process.env.NODE_ENV
 const isDev = mode === 'development'
@@ -55,6 +56,7 @@ const clientConfig = {
                 ],
                 '@babel/preset-react',
               ],
+              plugins: ['@loadable/babel-plugin'],
             },
           },
         ],
@@ -65,6 +67,7 @@ const clientConfig = {
     new CleanWebpackPlugin({
       cleanOnceBeforeBuildPatterns: ['**/*.js'],
     }),
+    new LoadablePlugin(),
   ],
   output: {
     path: `${__dirname}/dist`,
@@ -95,6 +98,10 @@ const serverConfig = {
                   },
                 ],
                 '@babel/preset-react',
+              ],
+              plugins: [
+                'babel-plugin-dynamic-import-node',
+                '@loadable/babel-plugin',
               ],
             },
           },
