@@ -2,12 +2,12 @@ import React from 'react'
 import { Typography } from '@material-ui/core'
 import Seo from '../components/Seo'
 
-export default function NotFound() {
+export default function Services() {
   return (
     <React.Fragment>
-      <Seo title="Not Found" description="this page does not exist" />
+      <Seo title="Services page" description="this is services page" />
       <Typography color="textSecondary" variant="h2">
-        404
+        Services
       </Typography>
     </React.Fragment>
   )

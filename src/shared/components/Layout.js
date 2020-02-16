@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { Toolbar } from '@material-ui/core'
+import { Toolbar, Link } from '@material-ui/core'
 import Header from './Header'
 
 const useStyles = makeStyles(theme => ({
@@ -9,7 +9,10 @@ const useStyles = makeStyles(theme => ({
     minHeight: '100vh',
   },
   main: {
-    display: 'block',
+    height: 300,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     paddingBottom: theme.footerHeight,
   },
   footer: {
@@ -20,7 +23,6 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    borderTop: '1px solid black',
   },
 }))
 
@@ -33,7 +35,10 @@ export default function Layout({ children }) {
         <Toolbar />
         <main className={classes.main}>{children}</main>
         <footer className={classes.footer}>
-          <p>footer</p>
+          <small>
+            Разработка:{' '}
+            <Link href="https://zhelvis.github.io/ru/">Владимир Жельвис</Link>
+          </small>
         </footer>
       </div>
     </React.Fragment>

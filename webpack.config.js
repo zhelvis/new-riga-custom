@@ -65,7 +65,7 @@ const clientConfig = {
   },
   plugins: [
     new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns: ['**/*.js'],
+      cleanOnceBeforeBuildPatterns: ['**/*.js', 'loadable-stats.json'],
     }),
     new LoadablePlugin(),
   ],
