@@ -1,28 +1,19 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { Toolbar, Link } from '@material-ui/core'
+import { Toolbar } from '@material-ui/core'
 import Header from './Header'
+import Footer from './Footer'
 
 const useStyles = makeStyles(theme => ({
   wrap: {
-    position: 'relative',
     minHeight: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
   },
   main: {
-    height: 300,
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingBottom: theme.footerHeight,
-  },
-  footer: {
-    height: theme.footerHeight,
-    position: 'absolute',
-    bottom: 0,
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexGrow: 1,
+    paddingLeft: theme.globalPadding,
+    paddingRight: theme.globalPadding,
   },
 }))
 
@@ -33,13 +24,8 @@ export default function Layout({ children }) {
       <Header />
       <div className={classes.wrap}>
         <Toolbar />
-        <main className={classes.main}>{children}</main>
-        <footer className={classes.footer}>
-          <small>
-            Разработка:{' '}
-            <Link href="https://zhelvis.github.io/ru/">Владимир Жельвис</Link>
-          </small>
-        </footer>
+        <div className={classes.main}>{children}</div>
+        <Footer />
       </div>
     </React.Fragment>
   )

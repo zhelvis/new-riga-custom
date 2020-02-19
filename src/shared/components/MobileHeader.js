@@ -28,7 +28,7 @@ const routes = [
 
 const useStyles = makeStyles(theme => ({
   header: {
-    backgroundColor: 'inherit',
+    backgroundColor: theme.palette.background.default,
     color: theme.palette.text.secondary,
     boxShadow: 'none',
     borderBottom: `1px solid ${theme.palette.divider}`,

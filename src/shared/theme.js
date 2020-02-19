@@ -14,7 +14,6 @@ const theme = createMuiTheme({
       default: '#fff',
     },
   },
-  footerHeight: 50,
   drawerWidth: 240,
   globalPadding: '10vw',
 })
