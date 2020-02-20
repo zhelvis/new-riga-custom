@@ -17,6 +17,6 @@ export default {
   },
   map: {
     display: 'Ядромино, дом 34г',
-    link: 'https://www.google.com/maps/search/?api=1&query=centurylink+field',
+    link: 'https://www.google.com/maps/search/?api=1&query=Ядромино+34',
   },
 }

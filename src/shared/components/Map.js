@@ -12,8 +12,8 @@ import contacts from '../contacts'
 const Map = withScriptjs(
   withGoogleMap(() => (
     <GoogleMap
-      defaultZoom={10}
-      defaultCenter={{ lat: -34.397, lng: 150.644 }}
+      defaultZoom={14}
+      defaultCenter={{ lat: 55.944577, lng: 36.591989 }}
       options={{
         zoomControl: false,
         mapTypeControl: false,
@@ -203,7 +203,7 @@ const Map = withScriptjs(
     >
       <Marker
         onClick={() => navigate(contacts.map.link)}
-        position={{ lat: -34.397, lng: 150.644 }}
+        position={{ lat: 55.944577, lng: 36.591989 }}
       />
     </GoogleMap>
   ))
