@@ -1,19 +1,17 @@
 import React from 'react'
 import { AppBar, Toolbar, Typography, Link, Hidden } from '@material-ui/core'
+import { Link as RouterLink } from '@reach/router'
 import AccessTimeIcon from '@material-ui/icons/AccessTime'
 import LocationOnIcon from '@material-ui/icons/LocationOn'
 import InstagramIcon from '@material-ui/icons/Instagram'
 import VkIcon from './VkIcon'
-import NavLink from './NavLink'
+import AlternateEmailIcon from '@material-ui/icons/AlternateEmail'
 import IconButtonLink from './IconButtonLink'
 
 import { makeStyles } from '@material-ui/core/styles'
 
-const routes = [
-  { name: 'Главная', path: '/' },
-  { name: 'О нас', path: 'about' },
-  { name: 'Услуги', path: 'services' },
-]
+import routes from '../routes'
+import contacts from '../contacts'
 
 const useStyles = makeStyles(theme => ({
   header: {
@@ -30,6 +28,17 @@ const useStyles = makeStyles(theme => ({
   },
   nav: {
     flexGrow: 1,
+  },
+  navlink: {
+    color: 'inherit',
+    fontSize: '1rem',
+    textDecoration: 'none',
+    padding: theme.spacing(1),
+    marginLeft: theme.spacing(1),
+    '&[aria-current="page"]': {
+      color: theme.palette.primary.main,
+      pointerEvents: 'none',
+    },
   },
   info: {
     display: 'flex',
@@ -52,9 +61,9 @@ export default function DesktopHeader() {
         </Typography>
         <nav className={classes.nav}>
           {routes.map(({ name, path }) => (
-            <NavLink key={name} to={path}>
+            <RouterLink className={classes.navlink} key={name} to={path}>
               {name}
-            </NavLink>
+            </RouterLink>
           ))}
         </nav>
         <Hidden mdDown implementation="css">
@@ -65,19 +74,38 @@ export default function DesktopHeader() {
         </Hidden>
         <div className={classes.info}>
           <Typography>
-            <Link color="primary" href="tel:+79998887766">
-              +7 999 888 77 66
+            <Link color="primary" href={contacts.phone.link}>
+              {contacts.phone.display}
             </Link>
           </Typography>
         </div>
         <div className={classes.info}>
-          <IconButtonLink color="primary" href="#" aria-label="instagram">
-            <InstagramIcon />
+          <IconButtonLink
+            color="primary"
+            href={contacts.email.link}
+            aria-label="email"
+          >
+            <AlternateEmailIcon />
           </IconButtonLink>
-          <IconButtonLink color="primary" href="#" aria-label="vk">
+          <IconButtonLink
+            color="primary"
+            href={contacts.vk.link}
+            aria-label="vk"
+          >
             <VkIcon />
           </IconButtonLink>
-          <IconButtonLink color="primary" href="#" aria-label="location">
+          <IconButtonLink
+            color="primary"
+            href={contacts.instagram.link}
+            aria-label="instagram"
+          >
+            <InstagramIcon />
+          </IconButtonLink>
+          <IconButtonLink
+            color="primary"
+            href={contacts.map.link}
+            aria-label="location"
+          >
             <LocationOnIcon />
           </IconButtonLink>
         </div>

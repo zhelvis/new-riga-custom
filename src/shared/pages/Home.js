@@ -9,18 +9,6 @@ export default function Home() {
       <Typography color="textSecondary" variant="h2">
         Home
       </Typography>
-      <Typography color="textSecondary" variant="h2">
-        Home
-      </Typography>
-      <Typography color="textSecondary" variant="h2">
-        Home
-      </Typography>
-      <Typography color="textSecondary" variant="h2">
-        Home
-      </Typography>
-      <Typography color="textSecondary" variant="h2">
-        Home
-      </Typography>
     </React.Fragment>
   )
 }

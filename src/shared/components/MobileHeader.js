@@ -15,16 +15,14 @@ import CloseIcon from '@material-ui/icons/Close'
 import PhoneIcon from '@material-ui/icons/Phone'
 import InstagramIcon from '@material-ui/icons/Instagram'
 import LocationOnIcon from '@material-ui/icons/LocationOn'
+import AlternateEmailIcon from '@material-ui/icons/AlternateEmail'
 import VkIcon from './VkIcon'
 import IconButtonLink from './IconButtonLink'
 
 import { makeStyles } from '@material-ui/core/styles'
 
-const routes = [
-  { name: 'Главная', path: '/' },
-  { name: 'О нас', path: 'about' },
-  { name: 'Услуги', path: 'services' },
-]
+import routes from '../routes'
+import contacts from '../contacts'
 
 const useStyles = makeStyles(theme => ({
   header: {
@@ -64,19 +62,30 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function ActionButtons() {
+function ActionButtons({ ...props }) {
   return (
     <React.Fragment>
-      <IconButtonLink color="primary" href="#" aria-label="phone">
+      <IconButtonLink {...props} href={contacts.phone.link} aria-label="phone">
         <PhoneIcon />
       </IconButtonLink>
-      <IconButtonLink color="primary" href="#" aria-label="instagram">
-        <InstagramIcon />
+      <IconButtonLink
+        {...props}
+        href={`mailto:${contacts.email}`}
+        aria-label="email"
+      >
+        <AlternateEmailIcon />
       </IconButtonLink>
-      <IconButtonLink color="primary" href="#" aria-label="vk">
+      <IconButtonLink {...props} href={contacts.vk.link} aria-label="vk">
         <VkIcon />
       </IconButtonLink>
-      <IconButtonLink color="primary" href="#" aria-label="location">
+      <IconButtonLink
+        {...props}
+        href={contacts.instagram.link}
+        aria-label="instagram"
+      >
+        <InstagramIcon />
+      </IconButtonLink>
+      <IconButtonLink {...props} href={contacts.map.link} aria-label="location">
         <LocationOnIcon />
       </IconButtonLink>
     </React.Fragment>
@@ -113,7 +122,7 @@ export default function MobileHeader() {
           </IconButton>
           <nav className={classes.nav}>
             <div>
-              <ActionButtons />
+              <ActionButtons color="primary" edge="end" />
             </div>
           </nav>
         </Toolbar>
@@ -147,7 +156,7 @@ export default function MobileHeader() {
         </List>
         <Divider />
         <div className={classes.drawerActions}>
-          <ActionButtons />
+          <ActionButtons color="primary" />
         </div>
       </Drawer>
     </React.Fragment>

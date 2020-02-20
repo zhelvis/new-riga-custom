@@ -6,6 +6,9 @@ import {
   Marker,
 } from 'react-google-maps'
 
+import { navigate } from '@reach/router'
+import contacts from '../contacts'
+
 const Map = withScriptjs(
   withGoogleMap(() => (
     <GoogleMap
@@ -198,7 +201,10 @@ const Map = withScriptjs(
         ],
       }}
     >
-      <Marker position={{ lat: -34.397, lng: 150.644 }} />
+      <Marker
+        onClick={() => navigate(contacts.map.link)}
+        position={{ lat: -34.397, lng: 150.644 }}
+      />
     </GoogleMap>
   ))
 )
