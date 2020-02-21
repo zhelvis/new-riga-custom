@@ -24,7 +24,7 @@ import contacts from '../contacts'
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
-    backgroundColor: theme.palette.text.primary,
+    backgroundColor: 'black',
     color: theme.palette.background.default,
   },
   map: {
@@ -36,7 +36,6 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: theme.globalPadding,
   },
   footer: {
-    backgroundColor: 'black',
     height: 50,
     display: 'flex',
     flexDirection: 'column',

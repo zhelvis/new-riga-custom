@@ -4,11 +4,14 @@ import ReactDOM from 'react-dom'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { ThemeProvider } from '@material-ui/core/styles'
 import { loadableReady } from '@loadable/component'
+import { DataProvider } from '../shared/components/DataContext'
 
 import App from '../shared/App'
 import theme from '../shared/theme'
 
-//ReactDOM.hydrate(<App />, document.getElementById('root'))
+const preloadedState = window.__PRELOADED_STATE__
+
+delete window.__PRELOADED_STATE__
 
 function Main() {
   React.useEffect(() => {
@@ -19,10 +22,12 @@ function Main() {
   }, [])
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <App />
-    </ThemeProvider>
+    <DataProvider data={preloadedState}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <App />
+      </ThemeProvider>
+    </DataProvider>
   )
 }
 

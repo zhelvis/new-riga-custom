@@ -1,4 +1,4 @@
-const htmlTemplate = (html, helmet, css, scripts) =>
+const htmlTemplate = (html, helmet, css, scripts, data) =>
   `<!DOCTYPE html>
 <html ${helmet.htmlAttributes.toString()}>
 <head>
@@ -12,6 +12,12 @@ const htmlTemplate = (html, helmet, css, scripts) =>
 </head>   
 <body>
     <div id="root">${html}</div>
+    <script>
+      window.__PRELOADED_STATE__ = ${JSON.stringify(data).replace(
+        /</g,
+        '\\u003c'
+      )}
+    </script>
     ${scripts}
 </body>
 </html>`
