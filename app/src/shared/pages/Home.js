@@ -1,20 +1,30 @@
 import React from 'react'
 import { Typography } from '@material-ui/core'
+import { useQuery } from '@apollo/react-hooks'
+import { gql } from 'apollo-boost'
 import Seo from '../components/Seo'
-import { DataContext } from '../components/DataContext'
+
+const query = gql`
+  {
+    allContacts {
+      id
+    }
+  }
+`
 
 export default function Home() {
-  const data = React.useContext(DataContext)
-  console.log(data)
+  const { loading, error, data } = useQuery(query)
+
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>Error :(</p>
+
   return (
     <React.Fragment>
       <Seo title="Home page" description="this is home page" />
       <Typography color="textSecondary" variant="h2">
         Home
       </Typography>
-      <Typography color="textSecondary" variant="body1">
-        {JSON.stringify(data)}
-      </Typography>
+      <Typography>{JSON.stringify(data)}</Typography>
     </React.Fragment>
   )
 }

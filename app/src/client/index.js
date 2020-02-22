@@ -1,17 +1,29 @@
-import 'core-js/es/promise' // for ie11
+import 'core-js/es/promise' // for older browsers
+import fetch from 'unfetch' // for older browsers
 import React from 'react'
 import ReactDOM from 'react-dom'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { ThemeProvider } from '@material-ui/core/styles'
 import { loadableReady } from '@loadable/component'
-import { DataProvider } from '../shared/components/DataContext'
+import { ApolloProvider } from '@apollo/react-hooks'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import { createHttpLink } from 'apollo-link-http'
+import { ApolloClient } from 'apollo-client'
 
 import App from '../shared/App'
 import theme from '../shared/theme'
+import config from '../../config'
 
-const preloadedState = window.__PRELOADED_STATE__
+const client = new ApolloClient({
+  link: createHttpLink({
+    uri: config.api,
+    fetch,
+  }),
+  cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
+  ssrForceFetchDelay: 100,
+})
 
-delete window.__PRELOADED_STATE__
+delete window.__APOLLO_STATE__
 
 function Main() {
   React.useEffect(() => {
@@ -22,12 +34,12 @@ function Main() {
   }, [])
 
   return (
-    <DataProvider data={preloadedState}>
+    <ApolloProvider client={client}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <App />
       </ThemeProvider>
-    </DataProvider>
+    </ApolloProvider>
   )
 }
 

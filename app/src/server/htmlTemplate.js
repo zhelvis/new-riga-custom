@@ -13,10 +13,7 @@ const htmlTemplate = (html, helmet, css, scripts, data) =>
 <body>
     <div id="root">${html}</div>
     <script>
-      window.__PRELOADED_STATE__ = ${JSON.stringify(data).replace(
-        /</g,
-        '\\u003c'
-      )}
+      window.__APOLLO_STATE__ = ${JSON.stringify(data).replace(/</g, '\\u003c')}
     </script>
     ${scripts}
 </body>
