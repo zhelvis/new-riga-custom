@@ -18,7 +18,10 @@ const PROJECT_NAME = "New Riga Custom";
 const keystone = new Keystone({
   name: PROJECT_NAME,
   adapter: new Adapter(),
-  onConnect: initialiseData
+  onConnect: initialiseData,
+  configureExpress: app => {
+    app.set('trust proxy', 1)
+  },
 });
 
 // Access control functions
