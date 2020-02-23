@@ -75,6 +75,12 @@ keystone.createList("ServiceGroup", {
       many: true,
       label: "Услуги"
     }
+  },
+  access: {
+    read: true,
+    update: access.userIsAdminOrOwner,
+    create: access.userIsAdmin,
+    delete: access.userIsAdmin,
   }
 });
 
@@ -85,6 +91,12 @@ keystone.createList("Service", {
   fields: {
     name: { type: Text, label: "Наименование" },
     group: { type: Relationship, ref: "ServiceGroup.services", label: "Раздел" }
+  },
+  access: {
+    read: true,
+    update: access.userIsAdminOrOwner,
+    create: access.userIsAdmin,
+    delete: access.userIsAdmin,
   }
 });
 
@@ -98,6 +110,12 @@ keystone.createList("ContentBlock", {
     body: {
       type: Wysiwyg
     },
+  },
+  access: {
+    read: true,
+    update: access.userIsAdminOrOwner,
+    create: access.userIsAdmin,
+    delete: access.userIsAdmin,
   }
 })
 
@@ -110,6 +128,12 @@ keystone.createList("Contact", {
     type: { type: Text, label: "Тип"},
     displayText: { type: Text, label: "Текст" },
     link: { type: Text, label: "Ссылка" }
+  },
+  access: {
+    read: true,
+    update: access.userIsAdminOrOwner,
+    create: access.userIsAdmin,
+    delete: access.userIsAdmin,
   }
 });
 
