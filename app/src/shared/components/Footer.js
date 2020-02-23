@@ -19,7 +19,6 @@ import VkIcon from './VkIcon'
 import MapWithAMarker from './Map'
 
 import routes from '../routes'
-import contacts from '../contacts'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -68,7 +67,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function Footer() {
+export default function Footer({ contacts }) {
   const classes = useStyles()
   return (
     <React.Fragment>
@@ -119,7 +118,9 @@ export default function Footer() {
                     <ListItemIcon className={classes.listItemIcon}>
                       <AccessTimeIcon />
                     </ListItemIcon>
-                    <Typography variant="body2">09:00 - 19:00</Typography>
+                    <Typography variant="body2">
+                      {contacts.time.display}
+                    </Typography>
                   </ListItem>
                 </List>
               </Grid>
@@ -175,6 +176,7 @@ export default function Footer() {
             loadingElement={<div style={{ height: `100%` }} />}
             containerElement={<div style={{ height: `100%` }} />}
             mapElement={<div style={{ height: `100%` }} />}
+            mapLink={contacts.map.link}
           />
         </div>
         <div className={classes.footer}>

@@ -22,7 +22,6 @@ import IconButtonLink from './IconButtonLink'
 import { makeStyles } from '@material-ui/core/styles'
 
 import routes from '../routes'
-import contacts from '../contacts'
 
 const useStyles = makeStyles(theme => ({
   header: {
@@ -62,17 +61,13 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function ActionButtons({ ...props }) {
+function ActionButtons({ contacts, ...props }) {
   return (
     <React.Fragment>
       <IconButtonLink {...props} href={contacts.phone.link} aria-label="phone">
         <PhoneIcon />
       </IconButtonLink>
-      <IconButtonLink
-        {...props}
-        href={`mailto:${contacts.email}`}
-        aria-label="email"
-      >
+      <IconButtonLink {...props} href={contacts.email.link} aria-label="email">
         <AlternateEmailIcon />
       </IconButtonLink>
       <IconButtonLink {...props} href={contacts.vk.link} aria-label="vk">
@@ -107,7 +102,7 @@ function ListItemLink({ text, ...props }) {
   )
 }
 
-export default function MobileHeader() {
+export default function MobileHeader({ contacts }) {
   const classes = useStyles()
   const [open, setOpen] = React.useState(false)
 
@@ -122,7 +117,7 @@ export default function MobileHeader() {
           </IconButton>
           <nav className={classes.nav}>
             <div>
-              <ActionButtons color="primary" edge="end" />
+              <ActionButtons contacts={contacts} color="primary" edge="end" />
             </div>
           </nav>
         </Toolbar>
@@ -151,12 +146,15 @@ export default function MobileHeader() {
         <Divider />
         <List>
           <ListItem>
-            <ListItemText primary="Время работы" secondary="9:00 - 19:00" />
+            <ListItemText
+              primary="Время работы"
+              secondary={contacts.time.display}
+            />
           </ListItem>
         </List>
         <Divider />
         <div className={classes.drawerActions}>
-          <ActionButtons color="primary" />
+          <ActionButtons contacts={contacts} color="primary" />
         </div>
       </Drawer>
     </React.Fragment>

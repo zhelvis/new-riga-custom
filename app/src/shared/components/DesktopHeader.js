@@ -11,7 +11,6 @@ import IconButtonLink from './IconButtonLink'
 import { makeStyles } from '@material-ui/core/styles'
 
 import routes from '../routes'
-import contacts from '../contacts'
 
 const useStyles = makeStyles(theme => ({
   header: {
@@ -51,7 +50,7 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-export default function DesktopHeader() {
+export default function DesktopHeader({ contacts }) {
   const classes = useStyles()
   return (
     <AppBar className={classes.header} position="fixed">
@@ -69,7 +68,7 @@ export default function DesktopHeader() {
         <Hidden mdDown implementation="css">
           <div className={classes.info}>
             <AccessTimeIcon className={classes.timeIcon} />
-            <Typography>09:00 - 19:00</Typography>
+            <Typography>{contacts.time.display}</Typography>
           </div>
         </Hidden>
         <div className={classes.info}>

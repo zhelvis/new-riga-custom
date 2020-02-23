@@ -6,8 +6,8 @@ import Seo from '../components/Seo'
 
 const query = gql`
   {
-    allContacts {
-      id
+    allContentBlocks(where: { type: "home" }) {
+      body
     }
   }
 `
@@ -24,7 +24,9 @@ export default function Home() {
       <Typography color="textSecondary" variant="h2">
         Home
       </Typography>
-      <Typography>{JSON.stringify(data)}</Typography>
+      <div
+        dangerouslySetInnerHTML={{ __html: data.allContentBlocks[0].body }}
+      />
     </React.Fragment>
   )
 }

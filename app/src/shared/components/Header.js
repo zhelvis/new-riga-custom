@@ -4,14 +4,14 @@ import { Hidden } from '@material-ui/core'
 import Desktop from './DesktopHeader'
 import Mobile from './MobileHeader'
 
-export default function Header() {
+export default function Header(props) {
   return (
     <React.Fragment>
       <Hidden smDown implementation="css">
-        <Desktop />
+        <Desktop {...props} />
       </Hidden>
       <Hidden mdUp implementation="css">
-        <Mobile />
+        <Mobile {...props} />
       </Hidden>
     </React.Fragment>
   )

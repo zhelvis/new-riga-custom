@@ -7,11 +7,10 @@ import {
 } from 'react-google-maps'
 
 import { navigate } from '@reach/router'
-import contacts from '../contacts'
 import mapStyles from '../mapStyles'
 
 const Map = withScriptjs(
-  withGoogleMap(() => (
+  withGoogleMap(({ mapLink }) => (
     <GoogleMap
       defaultZoom={14}
       defaultCenter={{ lat: 55.944577, lng: 36.591989 }}
@@ -26,7 +25,7 @@ const Map = withScriptjs(
       }}
     >
       <Marker
-        onClick={() => navigate(contacts.map.link)}
+        onClick={() => navigate(mapLink)}
         position={{ lat: 55.944577, lng: 36.591989 }}
       />
     </GoogleMap>

@@ -20,7 +20,6 @@ const client = new ApolloClient({
     fetch,
   }),
   cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
-  ssrForceFetchDelay: 100,
 })
 
 delete window.__APOLLO_STATE__
