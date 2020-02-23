@@ -19,9 +19,7 @@ const keystone = new Keystone({
   name: PROJECT_NAME,
   adapter: new Adapter(),
   onConnect: initialiseData,
-  configureExpress: app => {
-    app.set('trust proxy', 1)
-  },
+  secureCookies: false, // todo: config secureCookies behind proxy
 });
 
 // Access control functions
