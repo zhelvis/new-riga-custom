@@ -15,7 +15,7 @@ const { MongooseAdapter: Adapter } = require("@keystonejs/adapter-mongoose");
 
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
-const sessionStore = new MongoStore({url: 'mongodb://localhost:27017/new_riga_custom'});
+const sessionStore = new MongoStore({url: 'mongodb://localhost:27017/new-riga-custom'});
 
 const PROJECT_NAME = "New Riga Custom";
 
