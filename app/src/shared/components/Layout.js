@@ -1,11 +1,11 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { Toolbar } from '@material-ui/core'
 import { useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 
 import Header from './Header'
 import Footer from './Footer'
+import BannerBackground from './BannerBackground'
 
 const query = gql`
   {
@@ -17,7 +17,7 @@ const query = gql`
   }
 `
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(() => ({
   wrap: {
     minHeight: '100vh',
     display: 'flex',
@@ -25,8 +25,6 @@ const useStyles = makeStyles(theme => ({
   },
   main: {
     flexGrow: 1,
-    paddingLeft: theme.globalPadding,
-    paddingRight: theme.globalPadding,
   },
 }))
 
@@ -48,8 +46,8 @@ export default function Layout({ children }) {
   return (
     <React.Fragment>
       <Header contacts={contacts} />
+      <BannerBackground />
       <div className={classes.wrap}>
-        <Toolbar />
         <div className={classes.main}>{children}</div>
         <Footer contacts={contacts} />
       </div>

@@ -63,7 +63,6 @@ const useStyles = makeStyles(theme => ({
   },
   listItemLink: {
     color: theme.palette.background.default,
-    textDecoration: 'underline',
   },
 }))
 
@@ -180,7 +179,7 @@ export default function Footer({ contacts }) {
           />
         </div>
         <div className={classes.footer}>
-          <Typography variant="caption">New Riga Customs ©</Typography>
+          <Typography variant="caption">New Riga Custom ©</Typography>
           <span style={{ fontSize: 10 }}>
             Разработка:{' '}
             <Link href="https://zhelvis.github.io/ru/">Владимир Жельвис</Link>

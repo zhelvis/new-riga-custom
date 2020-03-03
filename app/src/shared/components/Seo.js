@@ -9,7 +9,7 @@ export default function Head({ description, title }) {
       htmlAttributes={{
         lang: locale,
       }}
-      title={title}
+      title={`New Riga Custom | ${title}`}
       meta={[
         {
           name: `description`,

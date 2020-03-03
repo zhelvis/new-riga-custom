@@ -14,6 +14,7 @@ const theme = createMuiTheme({
       default: '#fff',
     },
   },
+  backgroundImageHeight: 325,
   drawerWidth: 240,
   globalPadding: '10vw',
 })

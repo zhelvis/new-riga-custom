@@ -1,14 +1,17 @@
 import React from 'react'
-import { Typography } from '@material-ui/core'
 import Seo from '../components/Seo'
+import { Typography } from '@material-ui/core'
+import BannerContent from '../components/BannerContent'
 
 export default function Services() {
   return (
     <React.Fragment>
-      <Seo title="Services page" description="this is services page" />
-      <Typography color="textSecondary" variant="h2">
-        Services
-      </Typography>
+      <Seo title="Услуги" description="this is services page" />
+      <BannerContent>
+        <Typography color="inherit" variant="h2">
+          Услуги
+        </Typography>
+      </BannerContent>
     </React.Fragment>
   )
 }
