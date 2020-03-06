@@ -38,6 +38,13 @@ const userIsAdminOrOwner = auth => {
 };
 const access = { userIsAdmin, userOwnsItem, userIsAdminOrOwner };
 
+const publicAccess = {
+  read: true,
+  update: access.userIsAdminOrOwner,
+  create: access.userIsAdmin,
+  delete: access.userIsAdmin,
+}
+
 keystone.createList("User", {
   label: "Пользователи",
   singular: "Пользователь",
@@ -55,13 +62,7 @@ keystone.createList("User", {
       label: "Пароль"
     }
   },
-  access: {
-    read: access.userIsAdminOrOwner,
-    update: access.userIsAdminOrOwner,
-    create: access.userIsAdmin,
-    delete: access.userIsAdmin,
-    auth: true
-  }
+  access: publicAccess
 });
 
 keystone.createList("ServiceGroup", {
@@ -77,12 +78,7 @@ keystone.createList("ServiceGroup", {
       label: "Услуги"
     }
   },
-  access: {
-    read: true,
-    update: access.userIsAdminOrOwner,
-    create: access.userIsAdmin,
-    delete: access.userIsAdmin,
-  }
+  access: publicAccess
 });
 
 keystone.createList("Service", {
@@ -93,12 +89,7 @@ keystone.createList("Service", {
     name: { type: Text, label: "Наименование" },
     group: { type: Relationship, ref: "ServiceGroup.services", label: "Раздел" }
   },
-  access: {
-    read: true,
-    update: access.userIsAdminOrOwner,
-    create: access.userIsAdmin,
-    delete: access.userIsAdmin,
-  }
+  access: publicAccess
 });
 
 keystone.createList("ContentBlock", {
@@ -112,12 +103,7 @@ keystone.createList("ContentBlock", {
       type: Wysiwyg
     },
   },
-  access: {
-    read: true,
-    update: access.userIsAdminOrOwner,
-    create: access.userIsAdmin,
-    delete: access.userIsAdmin,
-  }
+  access: publicAccess
 })
 
 keystone.createList("Contact", {
@@ -130,12 +116,19 @@ keystone.createList("Contact", {
     displayText: { type: Text, label: "Текст" },
     link: { type: Text, label: "Ссылка" }
   },
-  access: {
-    read: true,
-    update: access.userIsAdminOrOwner,
-    create: access.userIsAdmin,
-    delete: access.userIsAdmin,
-  }
+  access: publicAccess
+});
+
+keystone.createList("Metadata", {
+  label: "Метаданные",
+  singular: "Метаданные",
+  plural: "Метаданные",
+  fields: {
+    name: { type: Text , label: "Страница"},
+    title: { type: Text, label: "Заголовок"},
+    description: { type: Text, label: "Описание"},
+  },
+  access: publicAccess
 });
 
 const authStrategy = keystone.createAuthStrategy({
