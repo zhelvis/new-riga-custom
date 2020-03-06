@@ -119,10 +119,10 @@ keystone.createList("Contact", {
   access: publicAccess
 });
 
-keystone.createList("Metadata", {
-  label: "Метаданные",
-  singular: "Метаданные",
-  plural: "Метаданные",
+keystone.createList("PageMetaData", {
+  label: "Метаданные страниц",
+  singular: "Метаданные страницы",
+  plural: "Метаданные страниц",
   fields: {
     name: { type: Text , label: "Страница"},
     title: { type: Text, label: "Заголовок"},
