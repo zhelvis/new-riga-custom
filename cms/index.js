@@ -105,6 +105,7 @@ keystone.createList("PageContentBlock", {
       isMultiline: true
     },
   },
+  labelField: 'block',
   access: publicAccess
 })
 
