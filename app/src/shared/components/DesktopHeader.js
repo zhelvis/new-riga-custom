@@ -78,36 +78,30 @@ export default function DesktopHeader({ contacts }) {
             </Link>
           </Typography>
         </div>
-        <div className={classes.info}>
-          <IconButtonLink
-            color="primary"
-            href={contacts.email.link}
-            aria-label="email"
-          >
-            <AlternateEmailIcon />
-          </IconButtonLink>
-          <IconButtonLink
-            color="primary"
-            href={contacts.vk.link}
-            aria-label="vk"
-          >
-            <VkIcon />
-          </IconButtonLink>
-          <IconButtonLink
-            color="primary"
-            href={contacts.instagram.link}
-            aria-label="instagram"
-          >
-            <InstagramIcon />
-          </IconButtonLink>
-          <IconButtonLink
-            color="primary"
-            href={contacts.map.link}
-            aria-label="location"
-          >
-            <LocationOnIcon />
-          </IconButtonLink>
-        </div>
+        <IconButtonLink
+          color="primary"
+          href={contacts.email.link}
+          aria-label="email"
+        >
+          <AlternateEmailIcon />
+        </IconButtonLink>
+        <IconButtonLink color="primary" href={contacts.vk.link} aria-label="vk">
+          <VkIcon />
+        </IconButtonLink>
+        <IconButtonLink
+          color="primary"
+          href={contacts.instagram.link}
+          aria-label="instagram"
+        >
+          <InstagramIcon />
+        </IconButtonLink>
+        <IconButtonLink
+          color="primary"
+          href={contacts.map.link}
+          aria-label="location"
+        >
+          <LocationOnIcon />
+        </IconButtonLink>
       </Toolbar>
     </AppBar>
   )

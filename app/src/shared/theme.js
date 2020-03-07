@@ -1,6 +1,14 @@
 import { createMuiTheme } from '@material-ui/core/styles'
 import { red } from '@material-ui/core/colors'
 
+const bpValues = {
+  xs: 0,
+  sm: 600,
+  md: 1000,
+  lg: 1280,
+  xl: 1920,
+}
+
 // Create a theme instance.
 const theme = createMuiTheme({
   palette: {
@@ -14,7 +22,11 @@ const theme = createMuiTheme({
       default: '#fff',
     },
   },
-  backgroundImageHeight: 325,
+  breakpoints: {
+    keys: ['xs', 'sm', 'md', 'lg', 'xl'],
+    up: key => `@media (min-width:${bpValues[key]}px)`,
+  },
+  bannerHeight: 325,
   drawerWidth: 240,
   globalPadding: '10vw',
 })

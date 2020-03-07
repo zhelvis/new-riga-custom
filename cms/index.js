@@ -6,7 +6,7 @@ const {
   Password,
   Relationship
 } = require("@keystonejs/fields");
-const { Wysiwyg } = require('@keystonejs/fields-wysiwyg-tinymce');
+// const { Wysiwyg } = require('@keystonejs/fields-wysiwyg-tinymce');
 const { GraphQLApp } = require("@keystonejs/app-graphql");
 const { AdminUIApp } = require("@keystonejs/app-admin-ui");
 const initialiseData = require("./initial-data");
@@ -92,15 +92,17 @@ keystone.createList("Service", {
   access: publicAccess
 });
 
-keystone.createList("ContentBlock", {
+keystone.createList("PageContentBlock", {
   label: "Контент",
   singular: "Контент",
   plural: "Контент",
   fields: {
-    name: { type: Text, label: "Блок" },
-    type: { type: Text, label: "Тип"},
-    body: {
-      type: Wysiwyg
+    name: { type: Text, label: "Страница" },
+    block: { type: Text, label: "Блок"},
+    content: {
+      type: Text,
+      label: "Контент",
+      isMultiline: true
     },
   },
   access: publicAccess
@@ -120,13 +122,13 @@ keystone.createList("Contact", {
 });
 
 keystone.createList("PageMetaDataField", {
-  label: "Метаданные страниц",
-  singular: "Метаданные страницы",
-  plural: "Метаданные страниц",
+  label: "Метаданные",
+  singular: "Метаданные",
+  plural: "Метаданные",
   fields: {
     name: { type: Text , label: "Страница"},
     title: { type: Text, label: "Заголовок"},
-    description: { type: Text, label: "Описание"},
+    description: { type: Text, label: "Описание", isMultiline: true},
   },
   access: publicAccess
 });

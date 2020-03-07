@@ -1,14 +1,15 @@
 import React from 'react'
-import { Typography } from '@material-ui/core'
+import { Toolbar, Typography } from '@material-ui/core'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
+
 import Seo from '../components/Seo'
-import BannerContent from '../components/BannerContent'
 
 const query = gql`
   {
-    allContentBlocks(where: { type: "home" }) {
-      body
+    allPageMetaDataFields(where: { name: "home" }) {
+      title
+      description
     }
   }
 `
@@ -16,21 +17,20 @@ const query = gql`
 export default function Home() {
   const { loading, error, data } = useQuery(query)
 
+  const isReady = !loading && !error
+
   return (
     <React.Fragment>
-      <Seo title="Главная" description="this is home page" />
-      <BannerContent>
-        <Typography color="inherit" variant="h2">
-          Главная
-        </Typography>
-      </BannerContent>
-      {loading || error ? (
-        <div />
-      ) : (
-        <div
-          dangerouslySetInnerHTML={{ __html: data.allContentBlocks[0].body }}
+      {isReady && (
+        <Seo
+          title={data.allPageMetaDataFields[0].title}
+          description={data.allPageMetaDataFields[0].description}
         />
       )}
+      <Toolbar />
+      <Typography color="inherit" variant="h2">
+        Главная
+      </Typography>
     </React.Fragment>
   )
 }

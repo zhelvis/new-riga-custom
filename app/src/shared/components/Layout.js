@@ -5,7 +5,6 @@ import gql from 'graphql-tag'
 
 import Header from './Header'
 import Footer from './Footer'
-import BannerBackground from './BannerBackground'
 
 const query = gql`
   {
@@ -46,7 +45,6 @@ export default function Layout({ children }) {
   return (
     <React.Fragment>
       <Header contacts={contacts} />
-      <BannerBackground />
       <div className={classes.wrap}>
         <div className={classes.main}>{children}</div>
         <Footer contacts={contacts} />

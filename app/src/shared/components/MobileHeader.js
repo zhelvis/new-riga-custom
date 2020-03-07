@@ -112,7 +112,7 @@ export default function MobileHeader({ contacts }) {
     <React.Fragment>
       <AppBar className={classes.header} position="fixed">
         <Toolbar disableGutters>
-          <IconButton aria-label="menu" onClick={toggleMenu}>
+          <IconButton edge="start" aria-label="menu" onClick={toggleMenu}>
             <MenuIcon />
           </IconButton>
           <nav className={classes.nav}>
