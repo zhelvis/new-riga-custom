@@ -1,7 +1,6 @@
 import express from 'express'
 import fetch from 'node-fetch'
 import React from 'react'
-//import { renderToString } from 'react-dom/server'
 import { ServerLocation } from '@reach/router'
 import { Helmet } from 'react-helmet'
 import CssBaseline from '@material-ui/core/CssBaseline'

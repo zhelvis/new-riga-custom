@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
     backgroundColor: 'black',
-    color: theme.palette.background.default,
+    color: 'white',
   },
   map: {
     width: '100%',

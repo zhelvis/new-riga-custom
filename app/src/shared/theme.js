@@ -18,9 +18,6 @@ const theme = createMuiTheme({
     secondary: {
       main: red[500],
     },
-    background: {
-      default: '#fff',
-    },
   },
   breakpoints: {
     keys: ['xs', 'sm', 'md', 'lg', 'xl'],

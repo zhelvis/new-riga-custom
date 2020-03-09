@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     paddingLeft: theme.globalPadding,
     paddingRight: theme.globalPadding,
-    color: theme.palette.background.default,
+    color: 'white',
   },
 }))
 export default function Banner({ children, img, lowResImg }) {

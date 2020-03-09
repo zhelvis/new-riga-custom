@@ -25,7 +25,7 @@ import routes from '../routes'
 
 const useStyles = makeStyles(theme => ({
   header: {
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: 'white',
     color: theme.palette.text.secondary,
     boxShadow: 'none',
     borderBottom: `1px solid ${theme.palette.divider}`,
