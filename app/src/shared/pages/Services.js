@@ -3,7 +3,7 @@ import loadable from '@loadable/component'
 import Seo from '../components/Seo'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
-import { Toolbar, Typography, makeStyles } from '@material-ui/core'
+import { Toolbar, Typography } from '@material-ui/core'
 
 const ServiceGroupBlock = loadable(() =>
   import('../components/ServiceGroupBlock')
@@ -12,13 +12,8 @@ const ServiceGroupBlock = loadable(() =>
 ServiceGroupBlock.preload()
 
 import Banner from '../components/Banner'
+import ContentBlock from '../components/ContentBlock'
 import { main } from '../images'
-
-const useStyles = makeStyles(theme => ({
-  content: {
-    padding: `2.5rem ${theme.globalPadding} 2.5rem ${theme.globalPadding}`,
-  },
-}))
 
 const query = gql`
   {
@@ -42,7 +37,6 @@ const query = gql`
 export default function Services() {
   const { loading, error, data } = useQuery(query)
   const isReady = !loading && !error
-  const classes = useStyles()
 
   const getBlockContent = block =>
     data.allPageContentBlocks.find(el => el.block == block).content
@@ -63,9 +57,9 @@ export default function Services() {
           </Typography>
         )}
       </Banner>
-      <div className={classes.content}>
+      <ContentBlock>
         {isReady && <ServiceGroupBlock data={data.allServiceGroups} />}
-      </div>
+      </ContentBlock>
     </React.Fragment>
   )
 }

@@ -23,7 +23,7 @@ const theme = createMuiTheme({
     keys: ['xs', 'sm', 'md', 'lg', 'xl'],
     up: key => `@media (min-width:${bpValues[key]}px)`,
   },
-  bannerHeight: 325,
+  bannerHeight: 375,
   drawerWidth: 240,
   globalPadding: '10vw',
 })
