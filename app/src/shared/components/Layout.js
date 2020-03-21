@@ -5,6 +5,8 @@ import { makeStyles } from '@material-ui/core/styles'
 const Header = loadable(() => import('./Header'))
 const Footer = loadable(() => import('./Footer'))
 
+Footer.preload()
+
 const useStyles = makeStyles(() => ({
   wrap: {
     minHeight: '100vh',

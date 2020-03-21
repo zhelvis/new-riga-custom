@@ -6,7 +6,7 @@ const lowResImg =
 
 const useStyles = makeStyles(theme => ({
   root: {
-    height: '90vh',
+    height: '85vh',
     width: '100%',
     backgroundImage: `url('/img/background.jpg'), url(${lowResImg})`,
     backgroundSize: `cover`,

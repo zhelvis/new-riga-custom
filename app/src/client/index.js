@@ -1,5 +1,7 @@
 import 'core-js/es/promise' // for older browsers
+import 'core-js/stable/object/assign' // for older browsers
 import fetch from 'unfetch' // for older browsers
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import CssBaseline from '@material-ui/core/CssBaseline'

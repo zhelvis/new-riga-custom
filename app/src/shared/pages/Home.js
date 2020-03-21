@@ -4,22 +4,18 @@ import { useQuery } from '@apollo/react-hooks'
 import { Typography } from '@material-ui/core'
 import gql from 'graphql-tag'
 
-const Seo = loadable(() => import('../components/Seo'))
+const Page = loadable(() => import('../components/PageTemplate'))
 const Banner = loadable(() => import('../components/Banner'))
 const AdvantagesBlock = loadable(() => import('../components/AdvantagesBlock'))
 const ContactsBlock = loadable(() => import('../components/ContactsBlock'))
 
-Seo.preload()
+// need for preventing material ui css missmatch on rehydration
 Banner.preload()
 AdvantagesBlock.preload()
 ContactsBlock.preload()
 
 const query = gql`
   {
-    allPageMetaDataFields(where: { name: "home" }) {
-      title
-      description
-    }
     allPageContentBlocks(where: { name: "home" }) {
       block
       content
@@ -28,20 +24,15 @@ const query = gql`
 `
 
 export default function Home() {
-  const { loading, error, data } = useQuery(query)
+  const { loading, data } = useQuery(query)
 
-  if (loading) return <span>loading...</span>
-  if (error) return <span>error...</span>
+  if (loading) return <div />
 
   const getBlockContent = block =>
     data.allPageContentBlocks.find(el => el.block == block).content
 
   return (
-    <React.Fragment>
-      <Seo
-        title={data.allPageMetaDataFields[0].title}
-        description={data.allPageMetaDataFields[0].description}
-      />
+    <Page name="home">
       <Banner>
         <React.Fragment>
           <Typography align="center" paragraph variant="h1">
@@ -54,6 +45,6 @@ export default function Home() {
       </Banner>
       <AdvantagesBlock />
       <ContactsBlock />
-    </React.Fragment>
+    </Page>
   )
 }
