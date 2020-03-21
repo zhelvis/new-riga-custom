@@ -1,11 +1,18 @@
 import React from 'react'
-import { Toolbar, Typography } from '@material-ui/core'
+import loadable from '@loadable/component'
 import { useQuery } from '@apollo/react-hooks'
-import { gql } from 'apollo-boost'
-import Banner from '../components/Banner'
-import Advantages from '../components/Advantages'
-import { main } from '../images'
-import Seo from '../components/Seo'
+import { Typography } from '@material-ui/core'
+import gql from 'graphql-tag'
+
+const Seo = loadable(() => import('../components/Seo'))
+const Banner = loadable(() => import('../components/Banner'))
+const AdvantagesBlock = loadable(() => import('../components/AdvantagesBlock'))
+const ContactsBlock = loadable(() => import('../components/ContactsBlock'))
+
+Seo.preload()
+Banner.preload()
+AdvantagesBlock.preload()
+ContactsBlock.preload()
 
 const query = gql`
   {
@@ -23,37 +30,30 @@ const query = gql`
 export default function Home() {
   const { loading, error, data } = useQuery(query)
 
-  const isReady = !loading && !error
+  if (loading) return <span>loading...</span>
+  if (error) return <span>error...</span>
 
   const getBlockContent = block =>
     data.allPageContentBlocks.find(el => el.block == block).content
 
   return (
     <React.Fragment>
-      {isReady && (
-        <Seo
-          title={data.allPageMetaDataFields[0].title}
-          description={data.allPageMetaDataFields[0].description}
-        />
-      )}
-      <Toolbar />
-      <Banner img={main.src} lowResImg={main.lowRes}>
-        {isReady && (
-          <React.Fragment>
-            <Typography
-              color="inherit"
-              variant="h2"
-              style={{ marginBottom: '1rem' }}
-            >
-              {getBlockContent('homeTitle')}
-            </Typography>
-            <Typography color="inherit" variant="h5">
-              {getBlockContent('homeSubtitle')}
-            </Typography>
-          </React.Fragment>
-        )}
+      <Seo
+        title={data.allPageMetaDataFields[0].title}
+        description={data.allPageMetaDataFields[0].description}
+      />
+      <Banner>
+        <React.Fragment>
+          <Typography align="center" paragraph variant="h1">
+            {getBlockContent('homeTitle')}
+          </Typography>
+          <Typography align="center" variant="h5">
+            {getBlockContent('homeSubtitle')}
+          </Typography>
+        </React.Fragment>
       </Banner>
-      <Advantages />
+      <AdvantagesBlock />
+      <ContactsBlock />
     </React.Fragment>
   )
 }

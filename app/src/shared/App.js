@@ -1,9 +1,9 @@
 import React from 'react'
 import { Router } from '@reach/router'
 import loadable from '@loadable/component'
-import Layout from './components/Layout'
 import ScrollToTop from './components/ScrollToTop'
 
+const Layout = loadable(() => import('./components/Layout'))
 const Home = loadable(() => import('./pages/Home'))
 const About = loadable(() => import('./pages/About'))
 const Services = loadable(() => import('./pages/Services'))

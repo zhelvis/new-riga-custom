@@ -1,13 +1,5 @@
-import { createMuiTheme } from '@material-ui/core/styles'
+import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles'
 import { red } from '@material-ui/core/colors'
-
-const bpValues = {
-  xs: 0,
-  sm: 600,
-  md: 1000,
-  lg: 1280,
-  xl: 1920,
-}
 
 // Create a theme instance.
 const theme = createMuiTheme({
@@ -18,14 +10,15 @@ const theme = createMuiTheme({
     secondary: {
       main: red[500],
     },
+    background: {
+      default: '#f5f5f5',
+    },
   },
-  breakpoints: {
-    keys: ['xs', 'sm', 'md', 'lg', 'xl'],
-    up: key => `@media (min-width:${bpValues[key]}px)`,
-  },
-  bannerHeight: 375,
   drawerWidth: 240,
-  globalPadding: '10vw',
+  globalPadding: {
+    h: '5vw',
+    v: '2rem',
+  },
 })
 
-export default theme
+export default responsiveFontSizes(theme)

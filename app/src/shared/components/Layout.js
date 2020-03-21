@@ -1,20 +1,9 @@
 import React from 'react'
+import loadable from '@loadable/component'
 import { makeStyles } from '@material-ui/core/styles'
-import { useQuery } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
 
-import Header from './Header'
-import Footer from './Footer'
-
-const query = gql`
-  {
-    allContacts {
-      type
-      displayText
-      link
-    }
-  }
-`
+const Header = loadable(() => import('./Header'))
+const Footer = loadable(() => import('./Footer'))
 
 const useStyles = makeStyles(() => ({
   wrap: {
@@ -29,25 +18,13 @@ const useStyles = makeStyles(() => ({
 
 export default function Layout({ children }) {
   const classes = useStyles()
-  const { loading, error, data } = useQuery(query)
-
-  // for ssr
-  if (loading) return <p>loading...</p>
-  if (error) return <p>error!</p>
-
-  let contacts = {}
-
-  data.allContacts.forEach(
-    ({ type, displayText, link }) =>
-      (contacts[type] = { display: displayText, link })
-  )
 
   return (
     <React.Fragment>
-      <Header contacts={contacts} />
+      <Header />
       <div className={classes.wrap}>
         <div className={classes.main}>{children}</div>
-        <Footer contacts={contacts} />
+        <Footer />
       </div>
     </React.Fragment>
   )

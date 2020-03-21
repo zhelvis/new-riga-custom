@@ -1,33 +1,26 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core'
 
+const lowResImg =
+  'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABsSFBcUERsXFhceHBsgKEIrKCUlKFE6PTBCYFVlZF9VXVtqeJmBanGQc1tdhbWGkJ6jq62rZ4C8ybqmx5moq6T/2wBDARweHigjKE4rK06kbl1upKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKT/wAARCACAAMADASIAAhEBAxEB/8QAGQAAAwEBAQAAAAAAAAAAAAAAAQIDAAQF/8QALhAAAgIBAwIFBAEEAwAAAAAAAAECESEDEjFBUQQTYXGRIjJCgaEUM1KxU2Jy/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/APBo21l/F6cNLV2wb4zfQr4RaUtOUZyptgclMx6L8HGS+mafuicvBSXRP2A40k+WNaj9pWXhpLo1+ib0pIBHKTBY21roBgbcFSrgXBqvqBnXcMYt9QxiuuRsR6r2AnJbepkGUkwewGbBgzQaAFGphowAoNs2exqbAFGwHaagBZsjUZoBXfUydGMBSOrKPDZaPi9RflfucprYHoR8a/ySY68Roz+6B5th3AelHT0dX7W7En4NdJJv1OPT1pab3RdM2prz1HcnbAGrFRk1w1hkwvPJkgCk3wHy5Lkt4WUYaic1g7JeTq53UwPM2hpHc/CRl9skycvCTjwgOWjbSkoShLJnjIE6MmuwVL6nYP0AMvqMk67gUlXYrBx70BK66G3eg8kt2WhK5XOQA5Y4MnbwGcdsXayLHgDo83QazptezNfhn/mv0c9L1Njv/AHS4eHaxqV7o55JXjgGO5vgDUU09CepByirSJhjKUXhtAM9Ga5QNkuw68Rqx/N/I39XOsxi/cCNejGjxwP/AFL/AOPT+Aefn+1D4YGeEC3Q/naUvu02v/LGUdKUbi5+zQCLUkmqZVeJ1IrEjnf3DRaksAXl4hTjU4XJ9SXVArJOU30wBRpWha+l+wsZtsMZriXFAaKW1DUScmnhlITw7TYAl+PuHTe2petgnNSSrow4UY+wA19TfSFSpAWZjtATyYLWAIDItPQpWpJiKksltNRlHEfkCctBpfck+wPLdXujj1OiUoJ3qRu8LHBzalbmo8AI3ZjbX2YdrABg7X2FAeEHLPQv4aW1vOMiRWaXCQNN07ukAdTrmxdIrqJeW5LqS08KwKNdCEsOik54rgWcWoxxhq0AnHBuTGfIGDDhsG11fQsowWnjmgJfixrtITowr7QMnUx93cn+RnQFJbnB3YiQ0ZN4Yi6ICicm1GPLLaVpNPDT6HPbTxLg61wAmpLbXX3F3KWXj2Rtd4ji8k4v1oCst2VGcmialqN5yw6WpJNpPAZzd1br4AC3vm0jOLdY/lCNZx/sN6ijVY9gGyneHfqaKxxJetCKL/x/gppxaeYYAbV/tKxINJPoNPTmoSbTwkTWcWl+wD5rzgEp7llFI6S3J5a/2Ce2T+mPP8AScUkn3BSKz08JXwgeU06YCOFK8DRVJttUaeHigOTcawBpKo/sVcBmmkrQI8AK+Q3fJnyFxrPKAMEusvgZaUsNE0dUZYVV6gc7bcm/U6Lwc7Tbb7lVK0ANbKRNcoo3TT6e1kpPOALwdJvy4/I++0vogvds5d8kqs2+XdgdD1JJcRftERaknLpH9URt9zWBac5Y+tsEXuxdsiU05bemQKbVm0JbX4orGbf4v4DtvhUBJatSTaqhXtdfUW2J/wCLM9OD6fFgIuVlB3LL4wZ6cZJLdVA8pVSmBlFyd0DY4q5Nc8DeX/2l8GcZdJ/pgTm1JcgjwNJNfivkVewCy5GbXCFlyZxadAZMvFXFZ/Rzo6oU4rHQCb033aRvLl1b/RdJ9lQ1L0+QJQhDq7vuaWhHp8WUlGPR5DFtLIHM9CV4TMtCT7I7VXR2HamsAcXkVy/gPkr1Opxj2piuPpYEY6Uew6gl0Gr9GvIGoE43FpYYQNsDnjKSl9WUPDUUuiElW5unkSqfAF3qQT+7P7N5sPV/ohbU91DedL2Ad6sedr+EL5q6R/kRzbeaFaS6gW3SfCjXuI39TsSwoAT5Ndr2BLkZU4gKjohwiKKRYFV7hTRNBsCgL7iruGwHUmutDrU9SN0ZP0AvvX5cmbrLI7s8hT9bAe/VUZiXfBrAdiv0YL7BSby3QCSimScG3STZ0NRXOQ+ftVRS+AOSUGuU0KnTL6jlLlsltsDYa7i0guDQLrkAcGM2ADM1gMB//9k='
+
 const useStyles = makeStyles(theme => ({
   root: {
-    height: theme.bannerHeight,
+    height: '90vh',
     width: '100%',
+    backgroundImage: `url('/img/background.jpg'), url(${lowResImg})`,
     backgroundSize: `cover`,
-    backgroundPosition: `center 25%`,
+    backgroundPosition: `center center`,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    paddingLeft: theme.globalPadding,
-    paddingRight: theme.globalPadding,
+    paddingLeft: theme.globalPadding.h,
+    paddingRight: theme.globalPadding.h,
     color: 'white',
   },
 }))
-export default function Banner({ children, img, lowResImg }) {
+export default function Banner({ children }) {
   const classes = useStyles()
 
-  return (
-    <div
-      style={{
-        backgroundImage: lowResImg
-          ? `url(${img}), url(${lowResImg})`
-          : `url(${img})`,
-      }}
-      className={classes.root}
-    >
-      {children}
-    </div>
-  )
+  return <div className={classes.root}>{children}</div>
 }

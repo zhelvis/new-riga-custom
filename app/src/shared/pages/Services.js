@@ -1,19 +1,14 @@
 import React from 'react'
 import loadable from '@loadable/component'
-import Seo from '../components/Seo'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
-import { Toolbar, Typography } from '@material-ui/core'
+import { Toolbar } from '@material-ui/core'
 
-const ServiceGroupBlock = loadable(() =>
-  import('../components/ServiceGroupBlock')
-)
+const Seo = loadable(() => import('../components/Seo'))
+const ServicesBlock = loadable(() => import('../components/ServicesBlock'))
 
-ServiceGroupBlock.preload()
-
-import Banner from '../components/Banner'
-import ContentBlock from '../components/ContentBlock'
-import { main } from '../images'
+Seo.preload()
+ServicesBlock.preload()
 
 const query = gql`
   {
@@ -21,45 +16,23 @@ const query = gql`
       title
       description
     }
-    allPageContentBlocks(where: { name: "services" }) {
-      block
-      content
-    }
-    allServiceGroups {
-      name
-      services {
-        name
-      }
-    }
   }
 `
 
 export default function Services() {
   const { loading, error, data } = useQuery(query)
-  const isReady = !loading && !error
 
-  const getBlockContent = block =>
-    data.allPageContentBlocks.find(el => el.block == block).content
+  if (loading) return <span>loading...</span>
+  if (error) return <span>error...</span>
 
   return (
     <React.Fragment>
-      {isReady && (
-        <Seo
-          title={data.allPageMetaDataFields[0].title}
-          description={data.allPageMetaDataFields[0].description}
-        />
-      )}
+      <Seo
+        title={data.allPageMetaDataFields[0].title}
+        description={data.allPageMetaDataFields[0].description}
+      />
       <Toolbar />
-      <Banner img={main.src} lowResImg={main.lowRes}>
-        {isReady && (
-          <Typography color="inherit" variant="h2">
-            {getBlockContent('servicesTitle')}
-          </Typography>
-        )}
-      </Banner>
-      <ContentBlock>
-        {isReady && <ServiceGroupBlock data={data.allServiceGroups} />}
-      </ContentBlock>
+      <ServicesBlock />
     </React.Fragment>
   )
 }
