@@ -1,12 +1,10 @@
-import React from 'react'
-import { useQuery } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
+import React, { useContext } from 'react'
 import { Link, Typography, makeStyles, Paper } from '@material-ui/core'
 import InstagramIcon from '@material-ui/icons/Instagram'
 import VkIcon from './VkIcon'
 import IconLinkButton from './IconButtonLink'
-import { convertArrayToObject } from '../utils'
 import Map from './Map'
+import { ContactsContext } from './ContactsProvider'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -30,24 +28,9 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const query = gql`
-  {
-    allContacts {
-      type
-      displayText
-      link
-    }
-  }
-`
-
 export default function ContactsBlock() {
   const classes = useStyles()
-  const { loading, data } = useQuery(query)
-
-  if (loading) return <div />
-
-  const contacts = convertArrayToObject(data.allContacts, 'type')
-
+  const contacts = useContext(ContactsContext)
   return (
     <React.Fragment>
       <div className={classes.root}>
