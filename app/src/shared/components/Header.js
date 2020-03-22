@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import { Link as RouterLink } from '@reach/router'
 import {
   AppBar,
@@ -11,8 +11,11 @@ import {
   ListItem,
   ListItemText,
   Typography,
+  Link,
+  Divider,
 } from '@material-ui/core'
 
+import { ContactsContext } from './ContactsProvider'
 import routes from '../routes'
 import MenuIcon from '@material-ui/icons/Menu'
 import CloseIcon from '@material-ui/icons/Close'
@@ -30,7 +33,13 @@ const useStyles = makeStyles(theme => ({
     paddingRight: theme.globalPadding.h,
   },
   brand: {
-    marginRight: 'auto',
+    marginRight: theme.spacing(4),
+  },
+  info: {
+    display: 'flex',
+  },
+  infoItem: {
+    marginLeft: theme.spacing(4),
   },
   navlink: {
     color: 'inherit',
@@ -46,7 +55,7 @@ const useStyles = makeStyles(theme => ({
   drawer: {
     width: theme.drawerWidth,
   },
-  listItemLink: {
+  listNavLink: {
     color: theme.palette.text.primary,
     '&:hover': {
       backgroundColor: theme.palette.action.hover,
@@ -59,27 +68,39 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-function ListItemLink({ text, ...props }) {
+function ListNavLink({ text, ...props }) {
   const classes = useStyles()
   return (
-    <li>
-      <ListItem
-        button
-        disableRipple
-        {...props}
-        className={classes.listItemLink}
-        component={RouterLink}
-      >
-        <ListItemText primary={text} />
-      </ListItem>
-    </li>
+    <ListItem
+      button
+      disableRipple
+      {...props}
+      className={classes.listNavLink}
+      component={RouterLink}
+    >
+      <ListItemText primary={text} />
+    </ListItem>
+  )
+}
+
+function ListContactLink({ primary, secondary, ...props }) {
+  return (
+    <ListItem button disableRipple {...props} component="a">
+      <ListItemText
+        primary={primary}
+        secondary={secondary}
+        primaryTypographyProps={{
+          color: 'primary',
+        }}
+      />
+    </ListItem>
   )
 }
 
 export default function Header() {
-  const classes = useStyles()
-
   const [open, setOpen] = useState(false)
+  const classes = useStyles()
+  const contacts = useContext(ContactsContext)
 
   const toggleMenu = () => setOpen(!open)
 
@@ -90,14 +111,29 @@ export default function Header() {
           <Typography className={classes.brand} color="inherit" variant="h6">
             New Riga Custom
           </Typography>
+
+          <div style={{ flexGrow: 1 }}>
+            <Hidden implementation="css" smDown>
+              <nav>
+                {routes.map(({ name, path }) => (
+                  <RouterLink className={classes.navlink} key={name} to={path}>
+                    {name}
+                  </RouterLink>
+                ))}
+              </nav>
+            </Hidden>
+          </div>
           <Hidden implementation="css" smDown>
-            <nav className={classes.nav}>
-              {routes.map(({ name, path }) => (
-                <RouterLink className={classes.navlink} key={name} to={path}>
-                  {name}
-                </RouterLink>
-              ))}
-            </nav>
+            <div className={classes.info}>
+              <Typography className={classes.infoItem}>
+                <Link href={contacts.phone.link} aria-label="Основной телефон">
+                  {contacts.phone.displayText}
+                </Link>
+              </Typography>
+              <Typography className={classes.infoItem}>
+                {contacts.time.displayText}
+              </Typography>
+            </div>
           </Hidden>
           <Hidden implementation="css" mdUp>
             <IconButton
@@ -126,13 +162,34 @@ export default function Header() {
               </Toolbar>
               <List component="nav">
                 {routes.map(({ name, path }, i) => (
-                  <ListItemLink
+                  <ListNavLink
                     key={i}
                     to={path}
                     text={name}
                     onClick={toggleMenu}
                   />
                 ))}
+              </List>
+              <Divider />
+              <List component="div">
+                <ListItem conponent="div">
+                  <ListItemText
+                    primary={contacts.time.displayText}
+                    secondary="Время работы"
+                  />
+                </ListItem>
+                <ListContactLink
+                  primary={contacts.phone.displayText}
+                  secondary="Основной телефон"
+                  aria-label="Основной телефон"
+                  href={contacts.phone.link}
+                />
+                <ListContactLink
+                  primary={contacts.addPhone.displayText}
+                  secondary="Дополнительный телефон"
+                  aria-label="Дополнительный телефон"
+                  href={contacts.phone.link}
+                />
               </List>
             </Drawer>
           </Hidden>
