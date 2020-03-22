@@ -122,6 +122,20 @@ keystone.createList("Contact", {
   access: publicAccess
 });
 
+keystone.createList("Advantage", {
+  label: "Преимущества",
+  singular: "Преимущество",
+  plural: "Преимущества",
+  fields: {
+    name: { type: Text, label: "Имя"},
+    type: { type: Text, label: "Тип"},
+    img: { type: Text, label: "Изображение" },
+    title: { type: Text, label: "Заголовок" },
+    description: { type: Text, label: "Описание", isMultiline: true},
+  },
+  access: publicAccess
+});
+
 keystone.createList("PageMetaDataField", {
   label: "Метаданные",
   singular: "Метаданные",
