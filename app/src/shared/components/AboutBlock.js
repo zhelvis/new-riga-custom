@@ -23,10 +23,6 @@ const useStyles = makeStyles(theme => ({
 
 const query = gql`
   {
-    allPageMetaDataFields(where: { name: "about" }) {
-      title
-      description
-    }
     allPageContentBlocks(where: { name: "about" }) {
       block
       content
