@@ -127,12 +127,11 @@ keystone.createList("Advantage", {
   singular: "Преимущество",
   plural: "Преимущества",
   fields: {
-    name: { type: Text, label: "Имя"},
-    type: { type: Text, label: "Тип"},
+    title: { type: Text, label: "Заголовок"},
     img: { type: Text, label: "Изображение" },
-    title: { type: Text, label: "Заголовок" },
     description: { type: Text, label: "Описание", isMultiline: true},
   },
+  labelField: 'title',
   access: publicAccess
 });
 
