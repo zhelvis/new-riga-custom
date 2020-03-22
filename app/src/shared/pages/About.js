@@ -1,8 +1,6 @@
 import React from 'react'
-import loadable from '@loadable/component'
-
-const AboutBlock = loadable(() => import('../components/AboutBlock'))
-const Page = loadable(() => import('../components/PageTemplate'))
+import Page from '../components/PageTemplate'
+import AboutBlock from '../components/AboutBlock'
 
 export default function About() {
   return (

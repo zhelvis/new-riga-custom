@@ -5,9 +5,9 @@ import gql from 'graphql-tag'
 import loadable from '@loadable/component'
 import { convertArrayToObject } from './utils'
 import { ContactsProvider } from './components/ContactsProvider'
+import ScrollToTop from './components/ScrollToTop'
+import Layout from './components/Layout'
 
-const ScrollToTop = loadable(() => import('./components/ScrollToTop'))
-const Layout = loadable(() => import('./components/Layout'))
 const Home = loadable(() => import('./pages/Home'))
 const About = loadable(() => import('./pages/About'))
 const Services = loadable(() => import('./pages/Services'))
@@ -28,9 +28,8 @@ export default function App() {
 
   if (loading) return <div />
 
-  const contacts = convertArrayToObject(data.allContacts, 'type')
   return (
-    <ContactsProvider contacts={contacts}>
+    <ContactsProvider contacts={convertArrayToObject(data.allContacts, 'type')}>
       <Layout>
         <Router primary={false}>
           <ScrollToTop path="/">

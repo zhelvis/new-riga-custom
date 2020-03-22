@@ -1,8 +1,6 @@
 import React from 'react'
-import loadable from '@loadable/component'
-
-const ServicesBlock = loadable(() => import('../components/ServicesBlock'))
-const Page = loadable(() => import('../components/PageTemplate'))
+import Page from '../components/PageTemplate'
+import ServicesBlock from '../components/ServicesBlock'
 
 export default function Services() {
   return (

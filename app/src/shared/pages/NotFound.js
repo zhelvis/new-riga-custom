@@ -1,12 +1,12 @@
 import React from 'react'
-import loadable from '@loadable/component'
-import { Typography } from '@material-ui/core'
+import { Typography, Toolbar } from '@material-ui/core'
 
-const Seo = loadable(() => import('../components/Seo'))
+import Seo from '../components/Seo'
 
 export default function NotFound() {
   return (
     <React.Fragment>
+      <Toolbar />
       <Seo title="404" description="Страница не найдена" />
       <br />
       <Typography paragraph align="center" variant="h1">

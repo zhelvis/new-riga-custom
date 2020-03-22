@@ -1,10 +1,8 @@
 import React from 'react'
-import loadable from '@loadable/component'
 import { useQuery } from '@apollo/react-hooks'
-import { gql } from 'apollo-boost'
+import gql from 'graphql-tag'
 import { Toolbar } from '@material-ui/core'
-
-const Seo = loadable(() => import('../components/Seo'))
+import Seo from './Seo'
 
 const query = gql`
   query Metadata($name: String!) {

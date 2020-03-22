@@ -2,9 +2,10 @@ import React from 'react'
 import loadable from '@loadable/component'
 import { makeStyles } from '@material-ui/core/styles'
 
-const Header = loadable(() => import('./Header'))
-const Footer = loadable(() => import('./Footer'))
+import Header from './Header'
 
+// need for preventing material ui css missmatch
+const Footer = loadable(() => import('./Footer'))
 Footer.preload()
 
 const useStyles = makeStyles(() => ({

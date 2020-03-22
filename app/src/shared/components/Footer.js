@@ -21,21 +21,24 @@ const useStyles = makeStyles(() => ({
 
 export default function Footer() {
   const classes = useStyles()
+
   return (
-    <div className={classes.footer}>
-      <Typography
-        className={classes.copyright}
-        variant="caption"
-        color="inherit"
-      >
-        ©{new Date().getFullYear()} New Riga Custom
-      </Typography>
-      <span className={classes.autor}>
-        Разработка:{' '}
-        <Link color="secondary" href="https://zhelvis.github.io/ru/">
-          Владимир Жельвис
-        </Link>
-      </span>
-    </div>
+    <React.Fragment>
+      <div className={classes.footer}>
+        <Typography
+          className={classes.copyright}
+          variant="caption"
+          color="inherit"
+        >
+          ©{new Date().getFullYear()} New Riga Custom
+        </Typography>
+        <span className={classes.autor}>
+          Разработка:{' '}
+          <Link color="secondary" href="https://zhelvis.github.io/ru/">
+            Владимир Жельвис
+          </Link>
+        </span>
+      </div>
+    </React.Fragment>
   )
 }
