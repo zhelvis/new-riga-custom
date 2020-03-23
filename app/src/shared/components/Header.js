@@ -126,7 +126,10 @@ export default function Header() {
           <Hidden implementation="css" smDown>
             <div className={classes.info}>
               <Typography className={classes.infoItem}>
-                <Link href={contacts.phone.link} aria-label="Основной телефон">
+                <Link
+                  href={contacts.phone.link}
+                  aria-label={`телефон (${contacts.phone.name})`}
+                >
                   {contacts.phone.displayText}
                 </Link>
               </Typography>
@@ -175,19 +178,25 @@ export default function Header() {
                 <ListItem conponent="div">
                   <ListItemText
                     primary={contacts.time.displayText}
-                    secondary="Время работы"
+                    secondary={contacts.time.name}
                   />
                 </ListItem>
                 <ListContactLink
                   primary={contacts.phone.displayText}
-                  secondary="Основной телефон"
-                  aria-label="Основной телефон"
+                  secondary={contacts.phone.name}
+                  aria-label={`телефон (${contacts.phone.name})`}
                   href={contacts.phone.link}
                 />
                 <ListContactLink
                   primary={contacts.addPhone.displayText}
-                  secondary="Дополнительный телефон"
-                  aria-label="Дополнительный телефон"
+                  secondary={contacts.addPhone.name}
+                  aria-label={`телефон (${contacts.addPhone.name})`}
+                  href={contacts.phone.link}
+                />
+                <ListContactLink
+                  primary={contacts.whatsapp.displayText}
+                  secondary={contacts.whatsapp.name}
+                  aria-label={contacts.whatsapp.name}
                   href={contacts.phone.link}
                 />
               </List>

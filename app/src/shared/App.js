@@ -16,6 +16,7 @@ const NotFound = loadable(() => import('./pages/NotFound'))
 const query = gql`
   {
     allContacts {
+      name
       type
       displayText
       link

@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { Link, Typography, makeStyles, Paper } from '@material-ui/core'
 import InstagramIcon from '@material-ui/icons/Instagram'
+import WhatsAppIcon from '@material-ui/icons/WhatsApp'
 import VkIcon from './VkIcon'
 import IconLinkButton from './IconButtonLink'
 import Map from './Map'
@@ -26,6 +27,9 @@ const useStyles = makeStyles(theme => ({
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
   },
+  social: {
+    marginTop: `1rem`,
+  },
 }))
 
 export default function ContactsBlock() {
@@ -39,34 +43,37 @@ export default function ContactsBlock() {
             <Typography paragraph variant="h2">
               Контакты
             </Typography>
-            <Typography align="center" paragraph>
+            <Typography variant="caption">{contacts.map.name}</Typography>
+            <Typography paragraph align="center">
               {contacts.map.displayText}
             </Typography>
-            <Typography paragraph>
-              Время работы: {contacts.time.displayText}
-            </Typography>
+            <Typography variant="caption">{contacts.time.name}</Typography>
+            <Typography paragraph>{contacts.time.displayText}</Typography>
+            <Typography variant="caption">{contacts.email.name}</Typography>
             <Typography paragraph>
               <Link
                 color="primary"
-                aria-label="Email"
+                aria-label={contacts.email.name}
                 href={contacts.email.link}
               >
                 {contacts.email.displayText}
               </Link>
             </Typography>
+            <Typography variant="caption">{contacts.phone.name}</Typography>
             <Typography paragraph>
               <Link
                 color="primary"
-                aria-label="Основной телефон"
+                aria-label={`Телефон (${contacts.phone.name})`}
                 href={contacts.phone.link}
               >
                 {contacts.phone.displayText}
               </Link>
             </Typography>
+            <Typography variant="caption">{contacts.addPhone.name}</Typography>
             <Typography paragraph>
               <Link
                 color="primary"
-                aria-label="Дополнительный телефон"
+                aria-label={`Телефон (${contacts.addPhone.name})`}
                 href={contacts.addPhone.link}
               >
                 {contacts.addPhone.displayText}
@@ -75,17 +82,24 @@ export default function ContactsBlock() {
             <div className={classes.social}>
               <IconLinkButton
                 color="primary"
-                aria-label="vk"
+                aria-label={contacts.vk.name}
                 href={contacts.vk.link}
               >
                 <VkIcon />
               </IconLinkButton>
               <IconLinkButton
                 color="primary"
-                aria-label="instagram"
+                aria-label={contacts.instagram.name}
                 href={contacts.instagram.link}
               >
                 <InstagramIcon />
+              </IconLinkButton>
+              <IconLinkButton
+                color="primary"
+                aria-label={contacts.whatsapp.name}
+                href={contacts.whatsapp.link}
+              >
+                <WhatsAppIcon />
               </IconLinkButton>
             </div>
           </div>
