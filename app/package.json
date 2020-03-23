@@ -33,6 +33,7 @@
     "node-fetch": "2.6.0",
     "react": "16.13.0",
     "react-dom": "16.13.0",
+    "react-ga": "2.7.0",
     "react-google-maps": "9.4.5",
     "react-helmet": "5.2.1",
     "unfetch": "4.1.0"

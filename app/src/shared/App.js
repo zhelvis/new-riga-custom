@@ -5,7 +5,7 @@ import gql from 'graphql-tag'
 import loadable from '@loadable/component'
 import { convertArrayToObject } from './utils'
 import { ContactsProvider } from './components/ContactsProvider'
-import ScrollToTop from './components/ScrollToTop'
+import RouteTracking from './components/RouteTracking'
 import Layout from './components/Layout'
 
 const Home = loadable(() => import('./pages/Home'))
@@ -33,12 +33,12 @@ export default function App() {
     <ContactsProvider contacts={convertArrayToObject(data.allContacts, 'type')}>
       <Layout>
         <Router primary={false}>
-          <ScrollToTop path="/">
+          <RouteTracking path="/">
             <Home path="/" />
             <About path="about" />
             <Services path="services" />
             <NotFound default />
-          </ScrollToTop>
+          </RouteTracking>
         </Router>
       </Layout>
     </ContactsProvider>
