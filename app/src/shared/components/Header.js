@@ -197,7 +197,7 @@ export default function Header() {
                   primary={contacts.whatsapp.displayText}
                   secondary={contacts.whatsapp.name}
                   aria-label={contacts.whatsapp.name}
-                  href={contacts.phone.link}
+                  href={contacts.whatsapp.link}
                 />
               </List>
             </Drawer>
