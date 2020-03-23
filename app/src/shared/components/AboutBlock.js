@@ -41,7 +41,7 @@ export default function AboutBlock() {
     <div className={classes.root}>
       <Paper className={classes.block}>
         <Typography align="center" variant="h2" className={classes.blockTitle}>
-          O нас
+          О нас
         </Typography>
         {!loading && <Typography>{getBlockContent('aboutMain')}</Typography>}
       </Paper>
