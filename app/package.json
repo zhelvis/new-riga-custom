@@ -30,7 +30,7 @@
     "core-js": "3.6.4",
     "express": "4.17.1",
     "graphql": "14.6.0",
-    "node-fetch": "2.6.0",
+    "node-fetch": "2.6.1",
     "react": "16.13.0",
     "react-dom": "16.13.0",
     "react-ga": "2.7.0",
