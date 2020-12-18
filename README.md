@@ -2,11 +2,7 @@
 
 ## Веб сайт автомастерской New Riga Custom
 
-https://newrigacustom.com/
-
 Изоморфоное react приложение и self-hosted CMS
-
-
 
 ### Стек
 
